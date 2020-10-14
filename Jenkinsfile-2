@@ -26,12 +26,18 @@ pipeline {
         }
         stage('Test'){
           agent any
+          tools {
+          maven 'Maven 363'
+          }
           steps{
             sh 'mvn test'
           }
         }
         stage('Package'){
           agent any
+          tools {
+          maven 'Maven 363'
+          }
           steps{
           sh 'mvn package'
           }        
