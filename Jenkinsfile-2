@@ -3,7 +3,7 @@ pipeline {
         label 'master'
     }    
     stages {
-        stage('git clone'){
+        stage('Git Clone'){
           agent any
           steps{  
             git credentialsId: 'bf94f267-6ef4-421d-8d4c-374252fb8d0f', url: 'https://github.com/trongthongvo/CICD-Jenkins-Pipeline-Script.git'
@@ -24,5 +24,12 @@ pipeline {
             sh 'echo Sonarqube Code Quality Check Done'
           }          
         }
+        stage('Test'){
+          agent any
+          steps{
+            sh 'mvn test'
+          }
+        } 
+
     }
 }
