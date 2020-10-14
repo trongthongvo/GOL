@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        label 'master'
+    }    
+    stages {
+        stage('git clone'){
+          agent any
+          steps{  
+            git credentialsId: 'bf94f267-6ef4-421d-8d4c-374252fb8d0f', url: 'https://github.com/trongthongvo/CICD-Jenkins-Pipeline-Script.git'
+            }
+        }
+        stage('Compile'){
+          agent any
+          tools {
+          maven 'Maven 363'
+          }
+          steps{ 
+            sh 'mvn compile'
+          }  
+                  
+        }
+    }
+}
