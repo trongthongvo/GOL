@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master'
+        label 'node-slave'
     }    
     stages {
         stage('Git Clone'){
@@ -29,7 +29,12 @@ pipeline {
           steps{
             sh 'mvn test'
           }
-        } 
-
+        }
+        stage('Package'){
+          agent any
+          steps{
+          sh 'mvn package'
+          }        
+        }
     }
 }
