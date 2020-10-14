@@ -1,5 +1,7 @@
 pipeline {
-    agent none
+    agent {
+        label 'node-slave'
+    }    
     stages {
         stage('Git Clone'){
           agent any
@@ -40,5 +42,10 @@ pipeline {
           sh 'mvn package'
           }        
         }
+        stage('Upload War File To Artifactory'){
+          agent any
+          steps{
+          sh 'echo Uploaded War file to Artifactory'
+      }
     }
 }
