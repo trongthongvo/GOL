@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'slave'
-    }    
+    agent none
     stages {
         stage('Git Clone'){
           agent any
