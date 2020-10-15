@@ -55,7 +55,7 @@ CMD ["catalina.sh", "run"]
 EXPOSE 8080
 EOT
 sudo docker build -t trongthongvo/webimage:$BUILD_NUMBER .
-sudo docker container run -itd --name trongthongvo/webimage$BUILD_NUMBER -p 8080 trongthongvo/webimage:$BUILD_NUMBER
+sudo docker container run -itd --name webimage$BUILD_NUMBER -p 8080 trongthongvo/webimage:$BUILD_NUMBER
 echo $BUILD_NUMBER
 docker ps -a
 sudo docker push trongthongvo/webimage:$BUILD_NUMBER
